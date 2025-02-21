@@ -40,4 +40,4 @@
     }
  }
 
-module.exports = authToken 
+module.exports = authToken ;
