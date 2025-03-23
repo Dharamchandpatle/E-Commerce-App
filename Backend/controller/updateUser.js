@@ -2,7 +2,7 @@ const userModel = require("../../Backend/models/userModel")
 
 async function updateUser(req,res){
     try{
-        const sessionUser = req.userId
+        const sessionUser = req.userId;
 
         const { userId , email, name, role} = req.body
 
@@ -18,7 +18,7 @@ async function updateUser(req,res){
 
 
 
-        const updateUser = await userModel.findByIdAndUpdate(userId,payload)
+        const updateUser = await userModel.findByIdAndUpdate(userId,payload);
 
         
         res.json({
@@ -37,4 +37,4 @@ async function updateUser(req,res){
 }
 
 
-module.exports = updateUser
+module.exports = updateUser;

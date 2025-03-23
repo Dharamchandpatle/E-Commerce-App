@@ -50,6 +50,7 @@ const ChangeUserRole = ({
        <div className='mx-auto bg-white shadow-md p-4 w-full max-w-sm'>
 
             <button className='block ml-auto' onClick={onClose}>
+                
                 <IoMdClose/>
             </button>
 

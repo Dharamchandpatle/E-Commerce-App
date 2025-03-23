@@ -3,7 +3,7 @@ require('dotenv').config();
 
 async function  connectDB(){
     try {
-        mongoose.connect(process.env.DB_URI, {
+        mongoose.connect(process.env.DB_URI , {
             // useNewUrlParser: true,
             // useUnifiedTopology: true,
           })
@@ -11,7 +11,7 @@ async function  connectDB(){
         console.log(err);    
         console.log("Database connection is failed ");    
     }
-}
+} 
 
 module.exports = connectDB
 

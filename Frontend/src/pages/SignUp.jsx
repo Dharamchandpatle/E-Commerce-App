@@ -12,10 +12,10 @@ const SignUp = () => {
     const [confirmPassword, setShowConfirmPassword] = useState(false)
     const [data, setData] = useState({
         email: "",
-        password: " ",
+        password: "",
         name: "",
         confirmPassword: "",
-        profilePic: " "
+        profilePic: ""
     })
     const navigate = useNavigate()
 
@@ -71,7 +71,7 @@ const SignUp = () => {
 
 
         } else {
-            toast.error("Password and Confirm Password are not same")
+            toast.error("Password and Confirm Password are not same");
         }
 
     }
@@ -195,3 +195,5 @@ const SignUp = () => {
 }
 
 export default SignUp
+
+

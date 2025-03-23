@@ -7,6 +7,13 @@ import ChangeUserRole from '../components/ChangeUserRole';
 
 const AllUsers = () => {
   const [allUser , setAllUser] = useState([])
+  const [openUpdateRole, setOpenUpdateRole] = useState(false)
+ const [updateUserDetails , setUpdateUserDetails] = useState({
+  email :"",
+  name : "",
+  role:"",
+  _id :""
+ })
 
   const fetchAllUsers = async()=>{
     const fetchData = await fetch(SummaryApi.allUser.url,{
@@ -52,7 +59,12 @@ const AllUsers = () => {
                 <td>{el?.email}</td>
                 <td>{el?.role}</td>
                 <td>{moment(el?.createdA).format("LL")}</td>
-                <td className='bg-green-100 p-2 flex justify-center items-center  rounded-full cursor-pointer hover:bg-green-600 hover:text-white'>
+                <td className='bg-green-100 p-2 flex justify-center items-center  rounded-full cursor-pointer hover:bg-green-600 hover:text-white' onClick={()=>{
+                  setUpdateUserDetails(el)
+                  setOpenUpdateRole(true)
+                }}
+                
+                >
                 <MdModeEdit/>
                 </td>
 
@@ -63,8 +75,21 @@ const AllUsers = () => {
         }
       </tbody>
      </table>
+     {
+        openUpdateRole && (
+        <ChangeUserRole 
+        onClose={()=>setOpenUpdateRole(false)}
+         name = {updateUserDetails.name}
+         email = {updateUserDetails.email}
+         role = {updateUserDetails.role}
+         userId = {updateUserDetails._id}
+         callFunc={fetchAllUsers}
+        />
+        )
 
-     <ChangeUserRole/>
+     }
+
+     {/* <ChangeUserRole/> */}
     </div>
   )
 }
