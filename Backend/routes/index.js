@@ -29,7 +29,7 @@ router.post("/update-user",authToken , updateUser)
 
 router.post("/upload-product",authToken,UploadProductController)  // authToken is a middleware to check if user is logged in or not
 router.get("/get-product",getProductController)  // get all product
-
+router.post("/update-product",authToken,UploadProductController)  // update product
 
 
 module.exports = router 
