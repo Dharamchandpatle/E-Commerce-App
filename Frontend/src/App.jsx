@@ -5,7 +5,7 @@ import Footer from './components/footer';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import SummaryApi from './common';
 import Context from './context';
 import { useDispatch } from 'react-redux';
@@ -14,6 +14,7 @@ import { setUserDetails } from './store/userSlice';
 function App() {
   // Correctly call useDispatch hook
   const dispatch = useDispatch();
+  const [cartProductCount , setCartProductCount] = useState(0)
 
   const fechUserDetails = async () => {
     try {
@@ -23,6 +24,8 @@ function App() {
       });
 
       const dataApi = await dataResponse.json();
+
+      setCartProductCount(dataApi?.data?.count)
 
       // Dispatching action to Redux store if API call is successful
       if (dataApi.success) {
@@ -35,16 +38,41 @@ function App() {
     }
   };
 
+  const fetchUserAddToCart= async()=>{
+    const dataResponse = await fetch(SummaryApi.addToCartProductCount.url,{
+      method : SummaryApi.addToCartProductCount.method ,
+      credentials : 'include'
+    })
+    const dataApi = await dataResponse.json()
+    console.log("dataapi ", dataApi);
+    
+  }
+
+
   useEffect(() => {
+    // user Deatails 
     fechUserDetails();
+
+    // user details cart produ 
+    fetchUserAddToCart();
   }, []); // Adding an empty dependency array to run only once
 
+
+  
   return (
     <>
+
+
       <Context.Provider value={{
-        fechUserDetails // user detail fetched 
+        fechUserDetails , // user detail fetched
+        cartProductCount ,// current user addd to art product count 
+        fetchUserAddToCart 
       }}>
+
+
         <ToastContainer />
+
+
         <Header />
         <main className='min-h-[calc(100vh-120px)] pt-16 '>
           <Outlet />
