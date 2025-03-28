@@ -1,4 +1,3 @@
-
 import React, { useCallback, useContext, useEffect, useState } from 'react'
 import  { useNavigate, useParams } from 'react-router-dom'
 import SummaryApi from '../common'
@@ -6,9 +5,10 @@ import { FaStar } from "react-icons/fa";
 import { FaStarHalf } from "react-icons/fa";
 import displayINRCurrency from '../helpers/displayCurrency';
 import VerticalCardProduct from '../components/VerticalCardProduct';
-import CategroyWiseProductDisplay from '../components/CategroyWiseProductDisplay';
+// import CategroyWiseProductDisplay from '../components/CategoryWiseProductDisplay';
 import addToCart from '../helpers/addToCart';
 import Context from '../context';
+import CategroyWiseProductDisplay from '../components/CategroyWiseProductDisplay';
 
 const ProductDetails = () => {
   const [data,setData] = useState({
@@ -219,7 +219,7 @@ const ProductDetails = () => {
 
       </div>
 
-// category wise product display  
+
 
       {
         data.category && (
