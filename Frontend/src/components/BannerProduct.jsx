@@ -1,5 +1,5 @@
                               
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import image1 from '../assest/banner/img1.webp'
 import image2 from '../assest/banner/img2.webp'
 import image3 from '../assest/banner/img3.jpg'
@@ -14,8 +14,7 @@ import image4Mobile from '../assest/banner/img4_mobile.jpg'
 import image5Mobile from '../assest/banner/img5_mobile.png'
 
 
-import { FaAngleRight } from "react-icons/fa6";
-import { FaAngleLeft } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa6"
 
 
 const BannerProduct = () => {
@@ -88,7 +87,6 @@ const BannerProduct = () => {
                     })
             }
           </div>
-
 
     </div>
 </div>
